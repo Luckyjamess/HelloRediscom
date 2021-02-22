@@ -6,8 +6,10 @@ from flask import Flask,request,jsonify
 #connectRedis
 app = Flask(__name__)
 db=redis.StrictRedis(
-        host='node9162-advweb-25.app.ruk-com.cloud',
-        port=11156,
+        #host='node9162-advweb-25.app.ruk-com.cloud',
+        host='10.100.2.140',
+        #port=11156,
+        port=6379,
         password='LZDovo88328',
         decode_responses=True)
 
@@ -59,7 +61,7 @@ def update_fruit(Key):
 def delete_staff(Key):
     db.delete(Key)
     return 'Delete data success!!!'
-    
+
 @app.route('/setname/<name>')
 def setname(name):
     db.set('name',name)
